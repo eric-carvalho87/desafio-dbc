@@ -7,6 +7,7 @@ import br.com.desafio.domain.polling.model.Poll;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,6 +18,11 @@ public class PollController {
 
     public PollController(PollService pollService) {
         this.pollService = pollService;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Poll>> listPolls() {
+        return ResponseEntity.ok(pollService.listPolls());
     }
 
     @GetMapping("/{pollId}/result")
