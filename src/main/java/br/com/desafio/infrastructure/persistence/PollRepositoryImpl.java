@@ -40,11 +40,7 @@ public class PollRepositoryImpl implements PollRepository {
             throw new IllegalArgumentException("Enquete não encontrada com o ID fornecido: " + pollId);
         }
 
-        if (pollEntity.get().getStartedAt() == null) {
-            return false;
-        }
-
-        return true;
+        return pollEntity.get().getStartedAt() != null;
     }
 
     @Override
