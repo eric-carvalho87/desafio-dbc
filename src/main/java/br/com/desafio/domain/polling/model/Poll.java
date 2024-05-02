@@ -51,11 +51,6 @@ public class Poll {
         this.startedAt = startedAt;
     }
 
-    public boolean isSessionOpen() {
-        LocalDateTime endTime = startedAt.plusSeconds(timeSession);
-        return LocalDateTime.now().isBefore(endTime);
-    }
-
     @Override
     public String toString() {
         return "Poll{" +
