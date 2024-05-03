@@ -1,4 +1,4 @@
-package br.com.desafio.adapters.persistence.entity;
+package br.com.desafio.infrastructure.repository.entity;
 
 import br.com.desafio.domain.polling.enums.VoteOptionEnum;
 
