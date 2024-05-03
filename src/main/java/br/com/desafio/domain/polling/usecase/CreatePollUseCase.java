@@ -33,7 +33,7 @@ public class CreatePollUseCase {
         poll.setStartedAt(LocalDateTime.now());
 
         Poll pollResult = pollRepository.registerPoll(poll);
-        sessionManager.startSession(pollResult.getTimeSession());
+        sessionManager.startSession(pollResult.getTimeSession(), pollResult.getId());
 
         return pollResult.getId();
     }
