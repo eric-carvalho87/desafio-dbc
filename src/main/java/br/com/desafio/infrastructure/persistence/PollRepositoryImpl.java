@@ -1,7 +1,7 @@
 package br.com.desafio.infrastructure.persistence;
 
-import br.com.desafio.adapters.persistence.entity.PollEntity;
-import br.com.desafio.adapters.persistence.mapper.PollMapper;
+import br.com.desafio.infrastructure.repository.entity.PollEntity;
+import br.com.desafio.adapters.mapper.PollMapper;
 import br.com.desafio.domain.polling.model.Poll;
 import br.com.desafio.domain.polling.repository.PollRepository;
 import br.com.desafio.infrastructure.repository.PollJpaRepository;

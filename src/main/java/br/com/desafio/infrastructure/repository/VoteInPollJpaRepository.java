@@ -1,6 +1,6 @@
 package br.com.desafio.infrastructure.repository;
 
-import br.com.desafio.adapters.persistence.entity.VoteInPollEntity;
+import br.com.desafio.infrastructure.repository.entity.VoteInPollEntity;
 import br.com.desafio.domain.polling.enums.VoteOptionEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

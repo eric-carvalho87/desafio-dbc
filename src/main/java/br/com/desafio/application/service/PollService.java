@@ -1,6 +1,6 @@
 package br.com.desafio.application.service;
 
-import br.com.desafio.adapters.persistence.mapper.PollMapper;
+import br.com.desafio.adapters.mapper.PollMapper;
 import br.com.desafio.domain.polling.enums.VoteOptionEnum;
 import br.com.desafio.domain.polling.model.Poll;
 import br.com.desafio.domain.polling.usecase.CreatePollUseCase;
