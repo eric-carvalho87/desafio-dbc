@@ -1,6 +1,6 @@
-package br.com.desafio.adapters.persistence.mapper;
+package br.com.desafio.adapters.mapper;
 
-import br.com.desafio.adapters.persistence.entity.PollEntity;
+import br.com.desafio.infrastructure.repository.entity.PollEntity;
 import br.com.desafio.domain.polling.model.Poll;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

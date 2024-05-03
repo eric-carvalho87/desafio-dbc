@@ -1,6 +1,6 @@
-package br.com.desafio.adapters.persistence.mapper;
+package br.com.desafio.adapters.mapper;
 
-import br.com.desafio.adapters.persistence.entity.VoteInPollEntity;
+import br.com.desafio.infrastructure.repository.entity.VoteInPollEntity;
 import br.com.desafio.adapters.rest.DTO.VoteInPollDTO;
 import br.com.desafio.domain.polling.enums.VoteOptionEnum;
 import org.mapstruct.Mapper;
