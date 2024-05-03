@@ -1,5 +1,6 @@
 package br.com.desafio.adapters.config;
 
+import br.com.desafio.adapters.session.SessionManagerImpl;
 import br.com.desafio.domain.polling.repository.PollRepository;
 import br.com.desafio.domain.polling.repository.VoteRepository;
 import br.com.desafio.domain.polling.usecase.CreatePollUseCase;
@@ -12,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class PollConfig {
     @Bean
-    public CreatePollUseCase createPollUseCase(PollRepositoryImpl pollRepository) {
-        return new CreatePollUseCase(pollRepository);
+    public CreatePollUseCase createPollUseCase(PollRepositoryImpl pollRepository, SessionManagerImpl sessionManager) {
+        return new CreatePollUseCase(pollRepository, sessionManager);
     }
 
     @Bean

@@ -2,6 +2,7 @@ package br.com.desafio.domain.polling.usecase;
 
 import br.com.desafio.domain.polling.model.Poll;
 import br.com.desafio.domain.polling.repository.PollRepository;
+import br.com.desafio.domain.session.SessionManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,8 @@ public class CreatePollUseCaseTest {
     @BeforeEach
     void setUp() {
         pollRepository = mock(PollRepository.class);
-        createPollUseCase = new CreatePollUseCase(pollRepository);
+        SessionManager sessionManager = mock(SessionManager.class);
+        createPollUseCase = new CreatePollUseCase(pollRepository, sessionManager);
         poll = new Poll(UUID.randomUUID(), "Example Poll", 60L);
     }
 
