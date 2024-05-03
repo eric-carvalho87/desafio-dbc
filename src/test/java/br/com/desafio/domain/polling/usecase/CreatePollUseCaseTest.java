@@ -9,65 +9,62 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class CreatePollUseCaseTest {
 
     private CreatePollUseCase createPollUseCase;
     private PollRepository pollRepository;
+    private Poll poll;
 
     @BeforeEach
     void setUp() {
         pollRepository = mock(PollRepository.class);
         createPollUseCase = new CreatePollUseCase(pollRepository);
+        poll = new Poll(UUID.randomUUID(), "Example Poll", 60L);
     }
 
     @Test
     void execute_ValidTitleAndDefaultTimeSession_ShouldRegisterPoll() {
-        String title = "Example Poll";
-        UUID pollId = UUID.randomUUID();
+        poll.setTimeSession(null);
 
-        when(pollRepository.registerPoll(title, 60L)).thenReturn(new Poll(pollId, title, 60L));
+        when(pollRepository.registerPoll(poll)).thenReturn(poll);
 
-        UUID createdPollId = createPollUseCase.execute(title);
+        createPollUseCase.execute(poll);
 
-        verify(pollRepository, times(1)).registerPoll(title, 60L);
+        verify(pollRepository, times(1)).registerPoll(poll);
 
-        assertEquals(pollId, createdPollId);
+        assertEquals(poll.getTimeSession(), 60L);
     }
 
     @Test
     void execute_ValidTitleAndCustomTimeSession_ShouldRegisterPoll() {
-        String title = "Example Poll";
-        Long timeSession = 120L;
-        UUID pollId = UUID.randomUUID();
+        Long timeSession = 1800L;
+        poll.setTimeSession(timeSession);
 
-        when(pollRepository.registerPoll(title, timeSession)).thenReturn(new Poll(pollId, title, timeSession));
+        when(pollRepository.registerPoll(poll)).thenReturn(poll);
 
-        UUID createdPollId = createPollUseCase.execute(title, timeSession);
+        createPollUseCase.execute(poll);
 
-        verify(pollRepository, times(1)).registerPoll(title, timeSession);
-        assertEquals(pollId, createdPollId);
+        verify(pollRepository, times(1)).registerPoll(poll);
+        assertEquals(poll.getTimeSession(), timeSession);
     }
 
     @Test
     void execute_NullTitle_ShouldThrowIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> createPollUseCase.execute(null));
+        poll.setTitle(null);
+        assertThrows(IllegalArgumentException.class, () -> createPollUseCase.execute(poll));
     }
 
     @Test
     void execute_EmptyTitle_ShouldThrowIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class, () -> createPollUseCase.execute(""));
+        poll.setTitle("");
+        assertThrows(IllegalArgumentException.class, () -> createPollUseCase.execute(poll));
     }
 
     @Test
     void execute_InvalidTimeSession_ShouldThrowIllegalArgumentException() {
-        String title = "Example Poll";
-        Long timeSession = 0L;
-
-        assertThrows(IllegalArgumentException.class, () -> createPollUseCase.execute(title, timeSession));
+        poll.setTimeSession(4000L);
+        assertThrows(IllegalArgumentException.class, () -> createPollUseCase.execute(poll));
     }
 }

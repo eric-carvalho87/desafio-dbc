@@ -9,6 +9,8 @@ public class Poll {
     private Long timeSession;
     private LocalDateTime startedAt;
 
+    public Poll() {}
+
     public Poll(UUID id, String title, Long timeSession) {
         if (title == null || title.trim().isEmpty()) {
             throw new IllegalArgumentException("O título da enquete não pode estar vazio");

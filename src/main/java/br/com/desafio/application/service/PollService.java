@@ -29,7 +29,7 @@ public class PollService {
     }
 
     public UUID createPoll(Poll pollRequest) {
-        return createPollUseCase.execute(pollRequest.getTitle(), pollRequest.getTimeSession());
+        return createPollUseCase.execute(pollRequest);
     }
 
     public void startPoll(UUID pollId, long timeSession) {

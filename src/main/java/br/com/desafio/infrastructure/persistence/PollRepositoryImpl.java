@@ -22,8 +22,8 @@ public class PollRepositoryImpl implements PollRepository {
     }
 
     @Override
-    public Poll registerPoll(String title, long timeSession) {
-        PollEntity pollEntity = new PollEntity(null, title, timeSession, null);
+    public Poll registerPoll(Poll poll) {
+        PollEntity pollEntity = PollMapper.INSTANCE.pollToPollEntity(poll);
         return PollMapper.INSTANCE.pollEntityToPoll(pollJpaRepository.save(pollEntity));
     }
 
