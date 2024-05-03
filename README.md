@@ -41,11 +41,20 @@ O aplicativo estará disponível em http://localhost:8080.
 
 ## Exemplos de Uso
 
-### Criar uma nova enquete
+### Criar uma nova enquete sem especificar tempo de sessão
 
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"title":"Minha Enquete"}' http://localhost:8080/api/polls
 ```
+
+### Criar uma nova enquete informando tempo de sessão
+
+*tempo de sessão em segundos
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"title":"Minha Enquete", "timeSession": 1200}' http://localhost:8080/api/polls
+```
+
 ### Votar em uma enquete
 
 ```bash
